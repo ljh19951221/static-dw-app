@@ -595,8 +595,9 @@ var arrModal = [
     ],
   },
 ]
-const huaweiChal="appmarket://details?id=<PackageName>"; // 华为
-const vivoChal="vivoMarket://details?id=<PackageName>"; // vivo
+const huaweiChal="appmarket://details?id=<com.huawei.appmarket>"; // 华为
+const vivoChal="vivoMarket://details?id=<com.bbk.appstore>"; // vivo
+const opppChal="oppoMarket://details?id=<com.oppo.market>"; // oppo
 const qqChal="tmast://appdetails?pname=<com.tencent.android.qqdownloader>"; // 应用宝  直接下载
 const baiduChal="http://market.android.com/details?id=<PackageName>"; // 百度 搜狗 网页
 const jinliChal="http://m.appgionee.com/marketdetail?id=<PackageName>"; // 金立 网页

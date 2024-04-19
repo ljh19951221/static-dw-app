@@ -71,10 +71,22 @@
             console.log('手机品牌', judgeBrand(window.navigator.userAgent.toLowerCase()))
             if (env().isAndroid) {
                 switch (judgeBrand(window.navigator.userAgent.toLowerCase())) {
-                    case 'xiaomi':
+                    case 'mi':
                         config.android_download_url = xiaomiChal;
                         open_app_url = config.android_download_url;
-                        break;                
+                        break;
+                    case 'Huawei':
+                        config.android_download_url = huaweiChal;
+                        open_app_url = config.android_download_url;
+                        break;
+                    case 'Oppo':
+                        config.android_download_url = opppChal;
+                        open_app_url = config.android_download_url;
+                        break;
+                    case 'vivo':
+                        config.android_download_url = vivoChal;
+                        open_app_url = config.android_download_url;
+                        break;              
                     default:
                         open_app_url = config.android_download_url;
                         break;
