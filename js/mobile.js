@@ -601,7 +601,7 @@ const opppChal="oppoMarket://details?id=<com.oppo.market>"; // oppo
 const qqChal="tmast://appdetails?pname=<com.tencent.android.qqdownloader>"; // 应用宝  直接下载
 const baiduChal="http://market.android.com/details?id=<PackageName>"; // 百度 搜狗 网页
 const jinliChal="http://m.appgionee.com/marketdetail?id=<PackageName>"; // 金立 网页
-const xiaomiChal="mimarket://details?id=<com.xiaomi.market>"; // 小米
+const xiaomiChal="mimarket://details?id=com.xnauto.accelerator"; // 小米
 const lenovoChal="http://market.lenovomm.com/details?id=<PackageName>"; // 联想
 const anzhiChal="anzhimarket://details?id=<PackageName>"; // 安智市场
 const meizuChal="mstore://details?package_name=<PackageName>"; // 魅族
