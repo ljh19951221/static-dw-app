@@ -80,17 +80,12 @@
             const searchParams = new URLSearchParams(window.location.search);
             var YKMSMJSQ = searchParams.get('YKMSMJSQ')
             console.log('YKMSMJSQ',YKMSMJSQ);
-            setTimeout(()=>{
-                // 复制参数
-                var aux = document.createElement("input"); 
-                aux.setAttribute("value", YKMSMJSQ); 
-                document.body.appendChild(aux); 
-                aux.select();
-                console.log('aux',aux)
-                var copyBool = document.execCommand("copy"); 
-                document.body.removeChild(aux);
-                console.log('copyBool', copyBool)
-            },1000)
+            if(navigator.clipboard){
+                async (e) => {
+                    await navigator.clipboard.writeText(YKMSMJSQ)
+                }
+            }
+            
             if (env().isAndroid) {
                 switch (judgeBrand(window.navigator.userAgent.toLowerCase())) {
                     case 'mi':
