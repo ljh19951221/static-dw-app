@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="./css/style6.css" />
 </head>
 
-<body>
+<body id="copyBtn">
     <div id="eCover" class="app style6 theme1">
         <div class="top flex">
             <div class="logo">
@@ -70,6 +70,31 @@
             }
         }
 
+        // 复制文本内容方法
+        function copyToClipboard(textToCopy) {
+            if(document.execCommand('copy')) {
+                // 创建textarea
+                var textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+                // 使textarea不在viewport，同时设置不可见
+                textArea.style.position = "fixed";
+                textArea.style.opacity = 0;
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                return new Promise((res, rej) => {
+                    // 执行复制命令并移除文本框
+                    document.execCommand('copy') ? res() : rej();
+                    textArea.remove();
+                });
+            } else if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                // navigator clipboard 向剪贴板写文本
+                return navigator.clipboard.writeText(textToCopy);
+            }
+        }
+
         window.onload = function () {
             var eCovers = $('#eCovers');
             var eBtn = $('#eBtn');
@@ -80,12 +105,7 @@
             const searchParams = new URLSearchParams(window.location.search);
             var YKMSMJSQ = searchParams.get('YKMSMJSQ')
             console.log('YKMSMJSQ',YKMSMJSQ);
-            if(navigator.clipboard){
-                async (e) => {
-                    await navigator.clipboard.writeText(YKMSMJSQ)
-                }
-            }
-            
+                        
             if (env().isAndroid) {
                 switch (judgeBrand(window.navigator.userAgent.toLowerCase())) {
                     case 'mi':
@@ -122,6 +142,15 @@
                 coverHTML += '<img src="' + item + '" alt="' + item + '" />';
             }
             eCovers.innerHTML = coverHTML;
+
+            // 添加复制点击事件
+            $('#copyBtn').addEventListener('click', function(e) {
+                console.log('触发点击时间', e)
+                // var codeElement =  e.target.previousSibling;
+                copyToClipboard(YKMSMJSQ).then(() => {
+                    console.log('复制成功')
+                });
+            })
         }
     </script>
 </body>
